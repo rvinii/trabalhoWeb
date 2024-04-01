@@ -4,7 +4,7 @@ Breve descrição do que o seu projeto faz.
 
 ## :technologist: Membros da equipe
 
-Matrícula, nome e curso dos participantes.
+495670 e 509716, Robert Vinícius e Andressa Pimenta, Engenharia de Computação
 
 ## :people_holding_hands: Papéis ou tipos de usuário da aplicação
 
