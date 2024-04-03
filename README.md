@@ -1,4 +1,4 @@
-# :checkered_flag: NOME DO PROJETO
+# :checkered_flag: BookNook
 
 O projeto consiste em uma plataforma de vendas exclusiva para livros digitais. A plataforma contará com um catálogo organizado de e-books que poderão ser adquiridos pelos clientes após a autenticação no sistema. Além da compra, os usuários autenticados terão a possibilidade de avaliar os livros e deixar comentários, enriquecendo a experiência de outros leitores. A visualização dos livros estará disponível para todos os visitantes do site, mas funcionalidades como avaliação, comentários e compra serão restritas aos usuários logados. O administrador do sistema terá controle total, podendo adicionar, atualizar ou remover livros do catálogo conforme necessário. A plataforma visa oferecer uma experiência de leitura digital enriquecedora, com um ambiente fácil de navegar e recursos interativos para os usuários.
 
