@@ -1,25 +1,56 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+// src/router/index.js
+import { createRouter, createWebHistory } from 'vue-router';
+import { useAuthStore } from '../store/auth';
+
+// Importar as views
+import HomePage from '../views/HomePage.vue';
+import CatalogoPage from '../views/CatalogoPage.vue';
+import LivroDetalhesPage from '../views/LivroDetalhesPage.vue';
+import UserLogin from '../views/UserLogin.vue';
+import AdminDashboard from '../views/AdminDashboard.vue';
+import NovoLivro from '../views/NovoLivro.vue';
+import EditarLivro from '../views/EditarLivro.vue';
 
 const routes = [
+  { path: '/', name: 'HomePage', component: HomePage },
+  { path: '/catalogo', name: 'CatalogoPage', component: CatalogoPage },
+  { path: '/livro/:id', name: 'LivroDetalhesPage', component: LivroDetalhesPage },
+  { path: '/login', name: 'UserLogin', component: UserLogin },
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/admin',
+    name: 'AdminDashboard',
+    component: AdminDashboard,
+    meta: { requiresAuth: true },
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    path: '/admin/novo-livro',
+    name: 'NovoLivro',
+    component: NovoLivro,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/admin/editar-livro/:id',
+    name: 'EditarLivro',
+    component: EditarLivro,
+    meta: { requiresAuth: true },
+  },
+];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  history: createWebHistory(),
+  routes,
+});
 
-export default router
+// Guarda de rota
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore();
+  const isAuthenticated = authStore.isAuthenticated;
+
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    next('/login');
+  } else {
+    next();
+  }
+});
+
+export default router;
