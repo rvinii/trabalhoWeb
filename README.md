@@ -93,3 +93,5 @@ As principais entidades do sistema são:
 ## :warning::warning::warning: Informações Adicionais
 
 Essas informações devem ser enviadas juntamente com a versão final do projeto.
+
+Para facilitar a execução, criei este [script][/script.sh]
