@@ -19,8 +19,17 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/catalogo">Catálogo</router-link>
           </li>
+          <li class="nav-item">
+              <router-link class="nav-link" to="/">Home</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/about">About</router-link>
+            </li>
           <li class="nav-item" v-if="isAuthenticated">
             <router-link class="nav-link" to="/admin">Administração</router-link>
+          </li>
+          <li class="nav-item" v-if="isAuthenticated">
+            <router-link class="nav-link" to="/compra">Minhas Compras</router-link>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -42,7 +51,7 @@ import { useAuthStore } from '../store/auth';
 import { useRouter } from 'vue-router';
 
 export default {
-  name: 'AppNavbar',
+  name: 'MinhasCompras',
   setup() {
     const authStore = useAuthStore();
     const router = useRouter();

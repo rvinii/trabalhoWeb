@@ -362,6 +362,126 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiCompraCompra extends Schema.CollectionType {
+  collectionName: 'compras';
+  info: {
+    singularName: 'compra';
+    pluralName: 'compras';
+    displayName: 'Compra';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    type: Attribute.Enumeration<['cartao', 'pix']> & Attribute.Required;
+    livro: Attribute.Relation<
+      'api::compra.compra',
+      'manyToOne',
+      'api::livro.livro'
+    >;
+    preco: Attribute.Decimal & Attribute.Required;
+    user_id: Attribute.Relation<
+      'api::compra.compra',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    cartaoCvv: Attribute.String;
+    cartaoNumber: Attribute.String;
+    cartaoName: Attribute.String;
+    cartaoValid: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::compra.compra',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::compra.compra',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLivroLivro extends Schema.CollectionType {
+  collectionName: 'livros';
+  info: {
+    singularName: 'livro';
+    pluralName: 'livros';
+    displayName: 'Livro';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titulo: Attribute.String & Attribute.Required;
+    autor: Attribute.String;
+    genero: Attribute.String & Attribute.Required;
+    preco: Attribute.Decimal & Attribute.Required;
+    capa: Attribute.Media<'images'>;
+    sinopse: Attribute.Text & Attribute.Required;
+    compras: Attribute.Relation<
+      'api::livro.livro',
+      'oneToMany',
+      'api::compra.compra'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::livro.livro',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::livro.livro',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPagamentoPagamento extends Schema.SingleType {
+  collectionName: 'pagamentos';
+  info: {
+    singularName: 'pagamento';
+    pluralName: 'pagamentos';
+    displayName: 'Pagamento';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cartaoNumber: Attribute.String;
+    cvv: Attribute.String;
+    cataovalid: Attribute.String;
+    cartaonome: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pagamento.pagamento',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pagamento.pagamento',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -771,6 +891,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    compras_user: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::compra.compra'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -798,6 +923,9 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::compra.compra': ApiCompraCompra;
+      'api::livro.livro': ApiLivroLivro;
+      'api::pagamento.pagamento': ApiPagamentoPagamento;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

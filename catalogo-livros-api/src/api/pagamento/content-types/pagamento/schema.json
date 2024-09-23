@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "pagamentos",
+  "info": {
+    "singularName": "pagamento",
+    "pluralName": "pagamentos",
+    "displayName": "Pagamento"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cartaoNumber": {
+      "type": "string"
+    },
+    "cvv": {
+      "type": "string"
+    },
+    "cataovalid": {
+      "type": "string"
+    },
+    "cartaonome": {
+      "type": "string"
+    }
+  }
+}

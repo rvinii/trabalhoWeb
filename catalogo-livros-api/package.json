@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
+    "develop": "node ./node_modules/@strapi/strapi/bin/strapi.js develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
@@ -22,15 +22,18 @@
     "react-router-dom": "5.3.4",
     "styled-components": "5.3.3"
   },
-  "author": {
-    "name": "A Strapi developer"
-  },
+  "author": "A Strapi developer",
   "strapi": {
-    "uuid": "d29fb913-bdab-43f0-91e0-fbe8bc771a9c"
+    "uuid": "0868e712-4bc8-4405-9151-c36e793881ce"
   },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "main": "index.js",
+  "keywords": [],
+  "devDependencies": {
+    "@vue/cli-service": "^5.0.8"
+  }
 }

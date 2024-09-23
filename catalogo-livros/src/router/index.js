@@ -10,12 +10,17 @@ import UserLogin from '../views/UserLogin.vue';
 import AdminDashboard from '../views/AdminDashboard.vue';
 import NovoLivro from '../views/NovoLivro.vue';
 import EditarLivro from '../views/EditarLivro.vue';
+import CheckoutPageView from '../views/CheckoutPageView.vue';
+import MinhasCompras from '@/views/MinhasCompras.vue';
+// import MinhasComprasView from '../views/MinhasComprasView.vue';
 
 const routes = [
   { path: '/', name: 'HomePage', component: HomePage },
   { path: '/catalogo', name: 'CatalogoPage', component: CatalogoPage },
+  { path: '/checkout/:id', name: 'CheckoutPageView', component: CheckoutPageView },
   { path: '/livro/:id', name: 'LivroDetalhesPage', component: LivroDetalhesPage },
   { path: '/login', name: 'UserLogin', component: UserLogin },
+  
   {
     path: '/admin',
     name: 'AdminDashboard',
@@ -32,6 +37,12 @@ const routes = [
     path: '/admin/editar-livro/:id',
     name: 'EditarLivro',
     component: EditarLivro,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/compra',
+    name: 'MinhasCompras',
+    component: MinhasCompras,
     meta: { requiresAuth: true },
   },
 ];

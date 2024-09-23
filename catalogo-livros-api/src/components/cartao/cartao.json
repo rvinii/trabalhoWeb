@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_cartao_cartaos",
+  "info": {
+    "displayName": "cartao"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "string"
+    },
+    "cvv": {
+      "type": "string"
+    },
+    "valid": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "compras",
+  "info": {
+    "singularName": "compra",
+    "pluralName": "compras",
+    "displayName": "Compra",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "cartao",
+        "pix"
+      ],
+      "required": true
+    },
+    "livro": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::livro.livro",
+      "inversedBy": "compras"
+    },
+    "preco": {
+      "type": "decimal",
+      "required": true
+    },
+    "user_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "compras_user"
+    },
+    "cartaoCvv": {
+      "type": "string"
+    },
+    "cartaoNumber": {
+      "type": "string"
+    },
+    "cartaoName": {
+      "type": "string"
+    },
+    "cartaoValid": {
+      "type": "string"
+    }
+  }
+}
